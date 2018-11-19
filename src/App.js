@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    word: "Huhu",
+    chars: 0
+  };
+
+  wordCountHandler = event => {
+    this.setState({
+      word: event.target.value,
+      chars: event.target.value.length
+    });
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            You typed {this.state.word} in the input field and the word-length
+            is {this.state.chars} characters.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <input type="text" onChange={this.wordCountHandler} />
+        </div>
       </div>
     );
   }
